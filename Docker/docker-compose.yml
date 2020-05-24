@@ -1,0 +1,24 @@
+version: "3.7"
+
+services:
+  core:
+    build: .
+    ports:
+      - 39795:39795
+      - 39796:39696
+      - 39797:39797/tcp
+      - 39797:39797/udp
+    restart: always
+    secrets:
+      - account_address
+      - account_password
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./.energicore3:/root/.energicore3
+
+secrets:
+  account_address:
+    file: ./configs/energi3_account_address
+  account_password:
+    file: ./configs/energi3_account_password
