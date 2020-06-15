@@ -31,35 +31,12 @@ To run Energi Gen 3 Core Node in a Docker container:
   docker-compose up --detach
   ```
 
-- open the necessary ports for external inbound access in router and/or firewall :
+- open the necessary ports for external inbound access in router and/or firewall:
   - `39795` TCP;
   - `39796` TCP;
   - `39797` TCP and UDP;
 
-  not sure about the first two ports, but `39797` TCP/UDP port is required for staking and Masternode as it is mentioned [here](https://docs.energi.software/en/advanced/core-node-vps#h-17-firewall-rules);
-- configure reverse proxy to redirect requests to Energi Gen 3 Core container;
-
-  example for Nginx:
-
-  ``` nginx
-  stream {
-      server {
-          listen 39795;
-          proxy_pass localhost:39795;
-      }
-
-      server {
-          listen 39796;
-          proxy_pass localhost:39796;
-      }
-
-      server {
-          listen 39797 udp reuseport;
-          listen 39797;
-          proxy_pass localhost:39797;
-      }
-  }
-  ```
+  not sure about the first two ports, but `39797` TCP/UDP port is required for staking and Masternode as it is mentioned [here](https://docs.energi.software/en/advanced/core-node-vps#h-17-firewall-rules).
 
 ## Improvements for dockerization
 
@@ -72,7 +49,6 @@ Possible improvements for Energi Gen 3 Core Node dockerization:
 - [ ]  make necessary adjustments to run dockerized Energi Gen 3 Core Node as a Masternode;
 - [ ]  make Energi Core Node Monitor installation optional;
 - [ ]  create a separate APT packages list for Energi Gen 3 Core installation in Docker container as not all of them are used in dockerized core version.
-- [ ]  add snippet for Apache reverse proxy.
 
 Any suggestions and solutions for improvements are welcome.
 

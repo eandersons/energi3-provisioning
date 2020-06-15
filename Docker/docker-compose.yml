@@ -5,7 +5,7 @@ services:
     build: .
     ports:
       - 39795:39795
-      - 39796:39696
+      - 39796:39796
       - 39797:39797/tcp
       - 39797:39797/udp
     restart: always
