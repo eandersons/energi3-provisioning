@@ -1,8 +1,8 @@
 # Energi Gen 3 Core Node provisioning with Docker
 
-> This repository is now considered inactive as there is an official Docker image: <https://hub.docker.com/r/energicryptocurrency/energi3> and this repository for reference.
+> This repository is now considered inactive as there is an official [Energi Gen 3 Docker image](https://hub.docker.com/r/energicryptocurrency/energi3) and this repository is left for reference.
 >
-> Below is the answer from Energi support regarding core node in a Docker container:
+> Below is the answer from the Energi support regarding running core node in a Docker container:
 >
 > ---
 >
