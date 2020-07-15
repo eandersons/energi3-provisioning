@@ -1,5 +1,39 @@
 # Energi Gen 3 Core Node provisioning with Docker
 
+> This repository is now considered inactive as there is an official Docker image: <https://hub.docker.com/r/energicryptocurrency/energi3> and this repository for reference.
+>
+> Below is the answer from Energi support regarding core node in a Docker container:
+>
+> ---
+>
+> As for the Docker container - we do have a release at the Docker hub that can be pulled with the following command:
+>
+> ``` sh
+> docker pull energicryptocurrency/energi3:v3.0.6
+> ```
+>
+> Once you have pulled the image, you can create a new container with
+>
+> ``` sh
+> sudo docker run -d --name CONTAINER_NAME -v /home/USER/nrgdocker:/root energicryptocurrency/energi3:v3.0.6
+> ```
+>
+> This will create a new container named `CONTAINER_NAME` (replace with a name you seem fit) and create a persistent storage space to host your keystore / blockchain files at `/home/USER/nrgdocker` (replace the `USER` portion with the current Linux user you are creating the container with).
+>
+> After the container is created, you can access the console and issue all the commands to check it is running and synchronizing (like `miner.stakingStatus()` and `nrg.syncing`) with the following command:
+>
+> ``` sh
+> sudo docker exec -it CONTAINER_NAME energi3 attach
+> ```
+>
+> replacing `CONTAINER_NAME` by the name you chose for your container.
+>
+> To import a new wallet, you can place the keystore files at the `/home/USER/nrgdocker/.energicore3/keystore/` - again, replacing `USER` for the username you are currently creating the container with.
+>
+> ---
+>
+> Here is a repository to make launching Energi Gen 3 Core Node in a Docker container easier using Docker Compose and the official Energi Gen 3 Docker image: [`energi3-docker-compose`](https://github.com/eandersons/energi3-docker-compose).
+
 - [Energi Gen 3 Core Node provisioning with Docker](#energi-gen-3-core-node-provisioning-with-docker)
   - [Install Energi Gen 3 Core Node using Docker](#install-energi-gen-3-core-node-using-docker)
   - [Improvements for dockerization](#improvements-for-dockerization)
@@ -59,22 +93,22 @@ Any suggestions and solutions for improvements are welcome.
 This repository has provisioning scripts as well as startup scripts for Energi Core Node:
 
 - Linux/VPS
-  - `energi3-linux-installer.sh`  : provisioning Script for amd64 or x86_64 Linux
+  - `energi3-linux-installer.sh`: provisioning Script for amd64 or x86_64 Linux
   - `energi3-aarch64-installer.sh`: provisioning Script for RPi and i386 (32-bit   inux)
-  - `start_staking.sh`            : start Staking
-  - `start_screen_staking.sh`     : start Staking within `screen`
-  - `start_mn.sh`                 : start Masternode
-  - `start_screen_mn.sh`          : start Masternode  within `screen`
-  - `energi3-cli`                 : wrapper command-line script
+  - `start_staking.sh`: start Staking
+  - `start_screen_staking.sh`: start Staking within `screen`
+  - `start_mn.sh`: start Masternode
+  - `start_screen_mn.sh`: start Masternode  within `screen`
+  - `energi3-cli`: wrapper command-line script
 
 - Windows
   - `energi3-windows-installer.bat`: provisioning Script
-  - `start_mn.bat`                 : start Masternode
-  - `start_staking.bat`            : start Staking
-  - `energi3.ico`                  : energi Icon Logo
+  - `start_mn.bat`: start Masternode
+  - `start_staking.bat`: start Staking
+  - `energi3.ico`: energi Icon Logo
 
 - MacOS
   - `energi3-macos-installer.sh`: provisioning Script
-  - `start_node.sh`             : script to start staking/mastrnode in mainnet or testnet
-  - `start_staking.sh`          : start Staking
-  - `start_mn.sh`               : start Masternode
+  - `start_node.sh`: script to start staking/mastrnode in mainnet or testnet
+  - `start_staking.sh`: start Staking
+  - `start_mn.sh`: start Masternode
