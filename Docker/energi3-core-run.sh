@@ -10,13 +10,13 @@
  --password /run/secrets/account_password
  --preload /root/energi3/js/utils.js\
  --rpc\
- --rpcport 39796\
- --rpcaddr "0.0.0.0" \
+ --rpcaddr "127.0.0.1" \
  --rpcapi admin,eth,web3,rpc,personal,energi\
+ --rpcport 39796\
  --unlock `cat /run/secrets/account_address`\
  --unlock.staking\
  --verbosity 3\
  --ws\
  --wsaddr "127.0.0.1"\
- --wsport 39795\
  --wsapi admin,eth,net,web3,personal,energi
+ --wsport 39795\
